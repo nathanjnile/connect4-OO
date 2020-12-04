@@ -21,10 +21,11 @@ public class Game {
         // set variable for if the game has been won
         boolean gameStatus = false;
 
+        // print board
+        gameBoard.printBoard();
+
         // while loop to start the game properly
         while(!gameStatus) {
-            // print board
-
             // get input from user or computer
             String userInput = currentPlayer.getUserInput();
 //            System.out.println(userInput);
@@ -38,18 +39,16 @@ public class Game {
                 continue;
             }
             // check if 4 in a row is satisfied
-
-
-            System.out.println(currentPlayer.getCounter());
-            currentPlayer = switchPlayer(currentPlayer, humanPlayer, computerPlayer);
+            gameStatus = gameBoard.check4InARow(currentPlayer.getCounter());
             // print board
+            if(currentPlayer == computerPlayer) gameBoard.printBoard();
+            // if the game
+            if(!gameStatus) {
+                currentPlayer = switchPlayer(currentPlayer, humanPlayer, computerPlayer);
+            }
         }
-
-
-
-
-
-
+        gameBoard.printBoard();
+        System.out.println("Congrats " + currentPlayer.getCounter() + " on winning!");
     }
 
     private void listInstructions() {
