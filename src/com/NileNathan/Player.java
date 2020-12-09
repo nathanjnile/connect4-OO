@@ -12,14 +12,9 @@ public abstract class Player {
         this.counter = counter;
     }
 
-    public int moveCounter() {
-        // get input from buffered input and return int
-        return 1;
-    }
-
     public char getCounter() {
         return counter;
     }
 
-    public abstract String getUserInput();
+    public abstract String getInputCounter();
 }

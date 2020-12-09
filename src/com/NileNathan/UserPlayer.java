@@ -3,22 +3,23 @@ package com.NileNathan;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class HumanPlayer extends Player {
+public class UserPlayer extends Player {
 
     private BufferedReader input;
 
-    public HumanPlayer(char counter) {
+    public UserPlayer(char counter) {
         super(counter);
         input = new BufferedReader(new InputStreamReader(System.in));
     }
 
-    public String getUserInput(){
+    public String getInputCounter(){
         String toReturn = null;
         try{
+            System.out.print("Enter column: ");
             toReturn = input.readLine();
         }
         catch(Exception e){
-            System.out.println("Wrong input");
+            System.out.println("Wrong input, try again");
         }
         return toReturn;
     }
