@@ -13,6 +13,7 @@ public class UserPlayer extends Player {
     }
 
     public String getInputCounter(){
+        // gets a user input value from the buffered reader and returns this String value
         String toReturn = null;
         try{
             System.out.print("Enter column: ");
