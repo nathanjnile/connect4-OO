@@ -7,6 +7,7 @@ public class Game {
         boolean gameStatus = false;
         // Create board instance
         Board gameBoard = new Board();
+        View gameView = new CLIView();
         // Create instance of user player
         UserPlayer userPlayer = new UserPlayer('r');
         // Create instance of computer player
@@ -18,7 +19,7 @@ public class Game {
         listInstructions();
 
         // print board
-        gameBoard.printBoard(userPlayer.getCounter(), computerPlayer.getCounter());
+        gameView.printBoard(gameBoard, userPlayer.getCounter(), computerPlayer.getCounter());
 
         // while loop to start the game properly
         while(!gameStatus) {
@@ -40,14 +41,14 @@ public class Game {
             // check if 4 in a row is satisfied
             gameStatus = gameBoard.check4InARow(currentPlayer.getCounter());
             // print board only when computer has taken placed, this avoids the board printing too many times
-            if(currentPlayer == computerPlayer) gameBoard.printBoard(userPlayer.getCounter(), computerPlayer.getCounter());
+            if(currentPlayer == computerPlayer) gameView.printBoard(gameBoard, userPlayer.getCounter(), computerPlayer.getCounter());
             // if the game has not been won then switch active player
             if(!gameStatus) {
                 currentPlayer = switchPlayer(currentPlayer, userPlayer, computerPlayer);
             }
         }
         // print the winning board and message for winning counter colour
-        gameBoard.printBoard(userPlayer.getCounter(), computerPlayer.getCounter());
+        gameView.printBoard(gameBoard, userPlayer.getCounter(), computerPlayer.getCounter());
         System.out.println("Congrats " + currentPlayer.getCounter() + " on winning!");
     }
 
