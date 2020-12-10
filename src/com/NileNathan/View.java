@@ -2,5 +2,7 @@ package com.NileNathan;
 
 public interface View {
 
-    public void printBoard(Board boardObject, char userCounter, char computerCounter);
+    void printBoard(Board boardObject, char userCounter, char computerCounter);
+
+    void listInstructions();
 }
